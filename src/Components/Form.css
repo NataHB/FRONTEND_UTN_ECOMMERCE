@@ -1,0 +1,53 @@
+form{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    width: 300px;
+    padding: 50px;
+    background: #0b0b0f
+    ;
+    border-radius: 20px;
+}
+
+.form-field{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+button{
+    padding: 10px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    background: #353551;
+}
+
+h1{
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+input{
+    padding: 8px;
+    border-radius: 20px;
+}
+
+label{
+    font-weight: bold;
+    padding: 5px;
+    padding-bottom: 10px;
+}
+
+a{
+    font-size: 14px;
+    padding: 20px;
+}
+

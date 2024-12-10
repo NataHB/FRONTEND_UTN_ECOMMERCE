@@ -1,0 +1,25 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #fff;
+}
+
+.root{
+    width: 100%;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #15151b;
+}
+
+.form-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+}
