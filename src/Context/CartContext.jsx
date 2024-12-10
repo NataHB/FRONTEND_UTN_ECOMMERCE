@@ -17,7 +17,7 @@ export const CartProvider = ({ children }) => {
       if (!is_authenticated) return; 
 
       try {
-        const response = await fetch(`http://localhost:3000/cart/cart/${userId}`, {
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/cart/cart/${userId}`, {
           headers: getAuthenticatedHeaders(),
         });
         const data = await response.json();
@@ -39,7 +39,7 @@ export const CartProvider = ({ children }) => {
       return
     }
     try {
-      const response = await fetch("http://localhost:3000/cart/cart/add", {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/cart/cart/add`, {
         method: "POST",
         body: JSON.stringify({ productId, quantity }),
         headers: getAuthenticatedHeaders(), // Se añaden las cabeceras con el token
@@ -56,7 +56,7 @@ export const CartProvider = ({ children }) => {
   // Eliminar producto del carrito
   const removeFromCart = async (productId) => {
     try {
-      const response = await fetch("http://localhost:3000/cart/cart/remove", {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/cart/cart/remove`, {
         method: "DELETE",
         body: JSON.stringify({ productId }),
         headers: getAuthenticatedHeaders(), // Se añaden las cabeceras con el token
@@ -74,7 +74,7 @@ export const CartProvider = ({ children }) => {
   // Actualizar cantidad del producto en el carrito
   const updateQuantity = async (productId, quantity) => {
     try {
-      const response = await fetch("http://localhost:3000/cart/cart/update", {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/cart/cart/update`, {
         method: "PUT",
         body: JSON.stringify({ productId, quantity }),
         headers: getAuthenticatedHeaders(), // Se añaden las cabeceras con el token
