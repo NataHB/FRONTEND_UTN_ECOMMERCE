@@ -10,7 +10,7 @@ import { CartContext } from '../../Context/CartContext'
 const Home = () => {
     const object = useContext(AuthContext)
     const { addToCart } = useContext(CartContext)
-
+    
     const { products_state, products_loading_state, products_error_state} = useProducts()
 
     const handleAddToCart = (productId, quantity) => {
