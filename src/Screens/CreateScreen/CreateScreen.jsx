@@ -10,7 +10,7 @@ const CreateScreen = () => {
           <h1>Crear producto</h1>
           <ProductCreator />
         </div>
-        <img src="/public/img/creative.jpg" alt="" />
+        <img url="/public/img/creative.jpg" alt="" />
       </section>
     </main>
   )

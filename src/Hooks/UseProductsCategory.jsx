@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { getAuthenticatedHeaders } from '../../utils/fetching';
 
 const UseProductsCategory = (category) => {
   const [productsByCategory, setProductsByCategory] = useState([]);
@@ -10,10 +11,7 @@ const UseProductsCategory = (category) => {
       try {
         const response = await fetch(`${import.meta.env.VITE_API_URL}/products/category/${category}`, {
           method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-            // Aquí puedes agregar otros headers si es necesario
-          }
+          headers: getAuthenticatedHeaders()
         });
 
         const data = await response.json();

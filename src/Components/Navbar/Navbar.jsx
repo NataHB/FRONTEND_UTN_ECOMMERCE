@@ -12,7 +12,7 @@ const Navbar = () => {
 
   useEffect(() => {
     reloadCategories();
-  }, [reloadCategories]);
+  }, []);
 
   if (loading) return <div>Cargando categorías...</div>;
   if (error) return <div>{error}</div>;
