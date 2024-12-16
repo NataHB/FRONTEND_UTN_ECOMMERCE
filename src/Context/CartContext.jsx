@@ -7,6 +7,7 @@ export const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
   const { is_authenticated } = useContext(AuthContext);
   const navigate = useNavigate();
   const userId = sessionStorage.getItem("accessToken"); // Esto está basado en que el `accessToken` está guardado en sessionStorage
@@ -34,10 +35,15 @@ export const CartProvider = ({ children }) => {
 
   // Agregar producto al carrito
   const addToCart = async (productId, quantity) => {
-    if (!is_authenticated){
+    if (isLoading) return;
+
+      if (!is_authenticated){
       navigate("/login")
       return
     }
+
+    setIsLoading(true);
+
     try {
       const response = await fetch(`${import.meta.env.VITE_API_URL}/cart/cart/add`, {
         method: "POST",
@@ -47,6 +53,7 @@ export const CartProvider = ({ children }) => {
       const data = await response.json();
       if (data.data.cart) {
         setCart(data.data.cart); // Se agrega el producto al carrito
+        setIsLoading(false);
       }
     } catch (error) {
       console.error("Error al agregar producto al carrito", error);

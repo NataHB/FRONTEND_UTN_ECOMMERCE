@@ -1,0 +1,24 @@
+.product-detail{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    flex-wrap: wrap;
+}
+
+.product-detail-image{
+    width: 500px;
+    justify-items: center;
+}
+
+.product-detail-image img{
+    width: 100%;
+    object-fit: scale-down;
+}
+
+.product-detail-info{
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    gap: 10px;
+}

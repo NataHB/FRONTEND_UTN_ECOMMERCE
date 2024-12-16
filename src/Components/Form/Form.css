@@ -1,0 +1,43 @@
+form{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    width: 275px;
+}
+
+.form-field{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+button{
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #ffffff;
+    font-weight: 500;
+    background: #ff7700;
+}
+
+input{
+    padding: 10px;
+    border-radius: 20px;
+    border: none;
+}
+
+label{
+    font-weight: bold;
+    padding: 3px;
+    font-size: 14px;
+    padding-bottom: 5px;
+}
+
+button a{
+    color: #ffffff;
+    font-size: 14px;
+    padding: 20px;
+}
+

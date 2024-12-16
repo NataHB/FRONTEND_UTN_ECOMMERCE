@@ -1,0 +1,6 @@
+.all-products{
+    display: flex;
+    flex-direction: column;
+    padding: 5% 10%;
+    gap: 25px;
+}

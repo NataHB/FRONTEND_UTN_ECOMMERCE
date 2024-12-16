@@ -1,0 +1,113 @@
+.hero{
+    display: flex;
+    flex-direction: column;
+    background-image: url('/public/img/card-cover-5.jpg');
+    background-size: cover;
+    background-position: top center; 
+    height: 90vh;
+    justify-content: center;
+    gap: 40px;
+    padding: 10%;
+    color: #ffffffd0;
+}
+
+.hero h1{
+    font-size: 65px;
+}
+
+.hero h3{
+    font-size: 18px;
+}
+
+.hero p{
+    font-size: 18px;
+    max-width: 450px;
+}
+
+.hero button{
+    width: 200px;
+    height: 45px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+.categorias-section{
+    padding: 5% 10%;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    align-items: center;
+    text-align: center;
+    flex-wrap: wrap;
+}
+
+.categorias-section-container{
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.categoria-container{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.categoria-container img{
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+}
+
+.categoria{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    position: relative;
+}
+
+.categoria button{
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+}
+
+.destacado{
+    padding: 5% 10%;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    align-items: center;
+    text-align: center;
+}
+
+@media screen and (min-width: 1260px) {
+    .categoria-container:nth-child(1){
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    .categoria-container:nth-child(1) img{
+        width: 350px;
+        height: 520px;
+    }
+
+    .categoria-container:nth-child(1){
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+}
+
+
+@media screen and (max-width: 1000px) {
+    .hero{
+        background-image: url('/public/img/card-cover-8.png');
+        height: 70vh;
+        gap: 25px;
+    }
+    .hero h1{
+        font-size: 50px;
+    }
+
+}   

@@ -1,18 +1,16 @@
 import { useState, useEffect } from 'react';
+import { getAuthenticatedHeaders } from '../../utils/fetching';
 
 const UseCategories = () => {
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  useEffect(() => {
     const fetchCategories = async () => {
       try {
         const response = await fetch(`${import.meta.env.VITE_API_URL}/products/category`, {
           method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-          },
+          headers: getAuthenticatedHeaders()
         });
         const data = await response.json();
         if (!data.ok) {
@@ -30,10 +28,15 @@ const UseCategories = () => {
       }
     };
 
+  useEffect(() => {
     fetchCategories();
   }, []);
 
-  return { categories, loading, error };
+  return { categories, 
+    loading, 
+    error, 
+    reloadCategories: fetchCategories, 
+  };
 };
 
 export default UseCategories;
