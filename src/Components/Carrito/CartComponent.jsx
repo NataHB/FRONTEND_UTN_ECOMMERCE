@@ -3,13 +3,13 @@ import { CartContext } from '../../Context/CartContext';
 import { useContext, useEffect } from 'react';
 import '../Navbar/Navbar.css';
 
-const CartComponent = ({ setForceUpdate }) => {
+const CartComponent = ({ setForceUpdate, forceUpdate }) => {
   const { cart, removeFromCart, updateQuantity } = useContext(CartContext);
 
   useEffect(() => {
     console.log(cart)
     setForceUpdate(prev => !prev);
-  }, [cart]);
+  }, [forceUpdate]);
 
   const handleRemove = (productId) => {
     removeFromCart(productId);

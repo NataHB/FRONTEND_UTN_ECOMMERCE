@@ -52,7 +52,7 @@ const Navbar = ({ forceUpdate, setForceUpdate }) => {
         </li>
         )}
         
-        <li className="dropdown"><CartComponent setForceUpdate={setForceUpdate} /></li>
+        <li className="dropdown"><CartComponent setForceUpdate={setForceUpdate} forceUpdate={forceUpdate}/></li>
       </ul>
     </nav>
   );
