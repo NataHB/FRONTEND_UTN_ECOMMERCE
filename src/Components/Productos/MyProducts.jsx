@@ -1,16 +1,21 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import UseMyProducts from '../../Hooks/UseMyProducts'
 import UseDeleteProduct from '../../Hooks/UseDeleteProduct'
 import { Link } from 'react-router-dom'
 
-const MyProducts = () => {
+const MyProducts = ({setForceUpdate}) => {
     const {myProducts, myProductsLoading, myProductsError, deleteProductLocal} = UseMyProducts()
     const { deleteProduct, product_loading_state_delete, product_error_state_delete } = UseDeleteProduct()
 
+
     const handleDelete = async (product_id) => {
         const response = await deleteProduct(product_id)
-        if(response) deleteProductLocal(product_id)
+        if(response){ 
+            deleteProductLocal(product_id)
+            setForceUpdate(prev => !prev)
+        }
     }
+
     return (
     <div>
         {

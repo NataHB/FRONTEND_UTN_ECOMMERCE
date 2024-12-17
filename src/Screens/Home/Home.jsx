@@ -21,21 +21,21 @@ const Home = () => {
             <div className='categorias-section-container'>
                 <div className='categoria-container'>
                     <div className='categoria'>
-                        <img src='public/img/filter.hombre.jpg'/>
+                        <img src='/img/filter.hombre.jpg'/>
                         <button><Link to={'/products'}>Ver colección</Link></button>
                     </div>
                     <div className='categoria'>
-                        <img src='public/img/filter.mujer.jpg'/>
+                        <img src='/img/filter.mujer.jpg'/>
                         <button><Link to={'/products'}>Ver colección</Link></button>
                     </div>
                 </div>
                 <div className='categoria-container'>
                     <div className='categoria'>
-                        <img src='public/img/filter.accesorios.jpg'/>
+                        <img src='/img/filter.accesorios.jpg'/>
                         <button><Link to={'/products'}>Ver colección</Link></button>                    
                     </div>
                 <div className='categoria'>
-                    <img src='public/img/filter.hombre.jpg'/>
+                    <img src='/img/filter.hombre.jpg'/>
                     <button><Link to={'/products'}>Ver colección</Link></button>                
                 </div>
                 </div>

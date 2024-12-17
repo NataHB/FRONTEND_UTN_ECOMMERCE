@@ -1,10 +1,10 @@
 import React from 'react'
 import {ProductUpdate} from '../../Components/Productos/index.js'
 
-const UpdateScreen = () => {
+const UpdateScreen = ({setForceUpdate}) => {
   return (
     <main>
-        <ProductUpdate />
+        <ProductUpdate setForceUpdate={setForceUpdate} />
     </main>
 
   )

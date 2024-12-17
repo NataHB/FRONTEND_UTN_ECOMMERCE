@@ -3,11 +3,9 @@ import Form from '../Form/Form.jsx'
 import useFormErrors from '../../Hooks/useFormErrors';
 import { useNavigate, Link } from 'react-router-dom';
 import { getAuthenticatedHeaders } from '../../../utils/fetching';
-import UseCategories from '../../Hooks/UseCategories';
 
-const ProductCreator = () => {
+const ProductCreator = ({setForceUpdate}) => {
   const navigate = useNavigate();
-  const { reloadCategories } = UseCategories();
 
   const initial_form_state = {
     image_base64: '',
@@ -35,9 +33,8 @@ const ProductCreator = () => {
         // Manejar errores si los hay
         return handleErrors(data.data.errors);
       }else{
+            setForceUpdate(true);
             navigate('/');
-            reloadCategories();
-
       }
 
 

@@ -6,18 +6,20 @@ import './Navbar.css';
 import { AuthContext } from '../../Context/AuthContext';
 import CartComponent from '../Carrito/CartComponent';
 
-const Navbar = () => {
+const Navbar = ({ forceUpdate }) => {
   const { categories, loading, error, reloadCategories } = UseCategories();
   const { is_authenticated } = useContext(AuthContext);
 
   useEffect(() => {
     reloadCategories();
-  }, []);
+  }, [forceUpdate]);
 
   if (loading) return <div>Cargando categorías...</div>;
   if (error) return <div>{error}</div>;
   
   //si estas logueado mostrar para desloguear
+
+
 
   return (
     <nav>

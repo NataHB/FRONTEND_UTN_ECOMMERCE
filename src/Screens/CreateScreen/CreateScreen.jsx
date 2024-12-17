@@ -2,15 +2,15 @@ import React from 'react'
 import {ProductCreator} from '../../Components/Productos/index.js'
 import './CreateScreen.css'
 
-const CreateScreen = () => {
+const CreateScreen = ({setForceUpdate}) => {
   return (
     <main>
       <section className='create'>
         <div className='create-container'>
           <h1>Crear producto</h1>
-          <ProductCreator />
+          <ProductCreator setForceUpdate={setForceUpdate}/>
         </div>
-        <img url="/public/img/creative.jpg" alt="" />
+        <img src="/img/creative.jpg" alt="" />
       </section>
     </main>
   )

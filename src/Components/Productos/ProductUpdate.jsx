@@ -6,10 +6,10 @@ import { getAuthenticatedHeaders } from '../../../utils/fetching'
 import UseProductDetail from '../../Hooks/UseProductsDetail'
 import UseCategories from '../../Hooks/UseCategories'
 
-const ProductUpdate = () => {
+const ProductUpdate = ({ setForceUpdate }) => {
     const { product_id } = useParams()
     const navigate = useNavigate()
-    const { reloadCategories } = UseCategories()
+
 
     const { product_detail_state, product_detail_loading_state } = UseProductDetail(product_id)
 
@@ -53,9 +53,8 @@ const ProductUpdate = () => {
                 // Manejar errores si los hay
                 return handleErrors(data.message);
             } else {
-                navigate('/');
-                reloadCategories();
-
+                setForceUpdate(true)
+                navigate('/')
             }
         } catch (error) {
             console.log('Error al crear el producto:', error);
