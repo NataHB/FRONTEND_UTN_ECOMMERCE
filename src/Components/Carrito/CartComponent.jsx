@@ -8,7 +8,6 @@ const CartComponent = ({ setForceUpdate, forceUpdate }) => {
 
   useEffect(() => {
     console.log(cart)
-    setForceUpdate(prev => !prev);
   }, [forceUpdate]);
 
   const handleRemove = (productId) => {
