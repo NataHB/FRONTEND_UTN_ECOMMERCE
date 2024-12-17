@@ -6,7 +6,7 @@ import './Navbar.css';
 import { AuthContext } from '../../Context/AuthContext';
 import CartComponent from '../Carrito/CartComponent';
 
-const Navbar = ({ forceUpdate }) => {
+const Navbar = ({ forceUpdate, setForceUpdate }) => {
   const { categories, loading, error, reloadCategories } = UseCategories();
   const { is_authenticated } = useContext(AuthContext);
 
@@ -52,7 +52,7 @@ const Navbar = ({ forceUpdate }) => {
         </li>
         )}
         
-        <li className="dropdown"><CartComponent /></li>
+        <li className="dropdown"><CartComponent setForceUpdate={setForceUpdate} /></li>
       </ul>
     </nav>
   );

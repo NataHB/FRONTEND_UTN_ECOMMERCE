@@ -3,11 +3,12 @@ import { CartContext } from '../../Context/CartContext';
 import { useContext, useEffect } from 'react';
 import '../Navbar/Navbar.css';
 
-const CartComponent = () => {
+const CartComponent = ({ setForceUpdate }) => {
   const { cart, removeFromCart, updateQuantity } = useContext(CartContext);
 
   useEffect(() => {
-    console.log(cart); // Esto te ayudará a verificar si el estado está actualizado correctamente
+    console.log(cart)
+    setForceUpdate(prev => !prev);
   }, [cart]);
 
   const handleRemove = (productId) => {
