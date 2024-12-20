@@ -1,7 +1,7 @@
 form{
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: 25px;
     width: 275px;
 }
 
@@ -24,3 +24,14 @@ label{
     padding-bottom: 5px;
 }
 
+.error{
+    color: #ff7700;
+    font-size: 14px;
+}
+
+@media screen and (max-width: 500px) {
+    form{
+        width: 100%;
+    }
+    
+}

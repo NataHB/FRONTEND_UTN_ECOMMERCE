@@ -23,6 +23,8 @@ const MyProducts = ({setForceUpdate}) => {
             ? <span>Cargando...</span>
             : myProductsError
             ? <span>{myProductsError}</span>
+            : myProducts.length === 0
+            ? <span>No tienes productos</span>
             : (
                 <div className='product-list'>
                     {myProducts.map((product) =>(

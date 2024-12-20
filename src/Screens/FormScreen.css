@@ -1,19 +1,17 @@
 .form-screen{
     display: flex;
-    height: 100vh;
 }
 
 .form-screen img{
     width: 50%;
-    height: 100%;
     object-fit: cover;
 }
 
 .form-screen-container{
     display: flex;
     gap: 25px;
+    min-height: 100vh;
     flex-direction: column;
-    justify-content: center;
     width: 50%;
     padding: 5% 10%;
 }
@@ -25,5 +23,6 @@
 
     .form-screen-container{
         width: 100%;
+        padding: 10% 10%;
     }
 }

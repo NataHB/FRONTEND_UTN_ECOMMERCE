@@ -17,23 +17,28 @@ const ProductDetail = () => {
     }
 
     return (
-        <div>
+        <>
             {               
                 product_detail_loading_state 
                 ? <span>Cargando...</span>
                 : <div className='product-detail'>
                     <div className='product-detail-image'>
-                        <img width={300} src={product_detail_state.image_base64} alt={product_detail_state.title} />
+                        <img src={product_detail_state.image_base64} alt={product_detail_state.title} />
                     </div>
                     <div className='product-detail-info'>
-                        <h1>{product_detail_state.title}</h1>
-                        <p>{product_detail_state.description}</p>
-                        <span>Precio ${product_detail_state.price}</span>
-                        <button onClick={() => handleAddToCart(product_detail_state.id, 1)}>Agregar al carrito</button>
+                        <div>
+                                <h1>{product_detail_state.title}</h1>
+                                <span>${product_detail_state.price}</span>
+
+                                <p>{product_detail_state.description}</p>
+                        </div>
+                        <div>
+                            <button onClick={() => handleAddToCart(product_detail_state.id, 1)}>Agregar al carrito</button>
+                        </div>
                     </div>
                 </div>
             }
-        </div>
+        </>
     )
 }
 

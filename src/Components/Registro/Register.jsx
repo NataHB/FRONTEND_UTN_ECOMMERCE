@@ -112,7 +112,6 @@ const Register = () => {
         buttonText="Registrarse"
       />
       {generalError && <p style={{ color: '#471248' }}>{generalError}</p>}
-      <Link to="/login">Login</Link>
     </div>
   );
 };

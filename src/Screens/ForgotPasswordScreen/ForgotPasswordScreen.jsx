@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { ForgotPassword } from '../../Components/Registro/index.js'
 import '../FormScreen.css'
 
@@ -9,6 +10,7 @@ const ForgotPasswordScreen = () => {
         <div className='form-screen-container'>
           <h1>Recuperar contraseña</h1>
           <ForgotPassword />
+          <Link to="/">Recordé mi password</Link>
         </div>
         <img src="/img/creative.jpg" alt="" />
       </section>

@@ -37,29 +37,26 @@ const Form = ({ initial_form_state, action, form_fields, errorState, buttonText 
         return (
           <div key={index} className="form-field">
             <label {...label.props}>{label.text}</label>
-            {/* Verificamos si el campo es de tipo "file" */}
             {inputField.props.type === 'file' ? (
               <>
                 <input
                   {...inputField.props}
                   onChange={handleFileChange}
-                  // El valor no se establece para el campo de archivo
-                  // Solo se manejará cuando el archivo sea seleccionado
                 />
-                {/* Mostrar la previsualización de la imagen si existe */}
                 {imagePreview && <img src={imagePreview} alt="Preview" style={{ width: '100px', marginTop: '10px' }} />}
               </>
             ) : (
               <input
                 {...inputField.props}
                 value={formState[inputField.props.name] || ''}
+                placeholder={initial_form_state[inputField.props.name] || inputField.props.placeholder}
                 onChange={handleChange}
               />
             )}
             {errorState[errors] && (
-              <ul>
+              <ul className='error'>
                 {errorState[errors].map((error, i) => (
-                  <li key={i} style={{ color: '#471248' }}>
+                  <li key={i}>
                     {error}
                   </li>
                 ))}

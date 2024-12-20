@@ -16,7 +16,7 @@
 body{
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
+    height: 100%;
     background-color: #f1f1f1;
 }
 
@@ -47,12 +47,13 @@ button a{
 .product-card{
     width: 200px;
     display: flex;
-    gap: 10px;
+    gap: 8px;
     flex-direction: column;
-    justify-content: space-around;
     align-items: center;
+    text-align: center;
     background-color: #ffffff;
     padding-bottom: 15px;
+    justify-content: space-between;
 }
 
 .product-card img{
@@ -62,7 +63,6 @@ button a{
 }
 
 .product-card p{
-    text-align: center;
     width: 80%;
 }
 
@@ -83,5 +83,21 @@ a{
 }
 
 .product-card h2{
-    font-size: 30px;
+    font-size: 17px;
+    padding: 0px 5px;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #ff7700a1;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #ff7700;
 }

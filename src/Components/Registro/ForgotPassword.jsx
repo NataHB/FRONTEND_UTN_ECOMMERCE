@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Form from '../Form/Form.jsx';
 import useFormErrors from '../../Hooks/useFormErrors';
 
@@ -73,7 +73,6 @@ const ForgotPassword = () => {
         buttonText="Restablecer"
       >
         <button type="submit">Restablecer</button>
-        <Link to="/">Recordé mi password</Link>
       </Form>
 
       {/* Mostrar errores si existen */}

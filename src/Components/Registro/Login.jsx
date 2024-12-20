@@ -1,6 +1,4 @@
 import React, { useContext } from 'react';
-import { Link, Navigate, useNavigate } from 'react-router-dom';
-import UseForm from '../../Hooks/UseForm';
 import UseFormErrors from '../../Hooks/useFormErrors';
 import Form from '../Form/Form.jsx';
 import { AuthContext } from '../../Context/AuthContext';
@@ -87,8 +85,6 @@ const Login = () => {
         buttonText="Ingresar"
       />
       {errorState.message && <p style={{ color: '#471248' }}>{errorState.message}</p>}
-      <Link to="/forgot-password">Olvide mi password</Link>
-      <Link to="/register">Registrarme</Link>
     </div>
   );
 };

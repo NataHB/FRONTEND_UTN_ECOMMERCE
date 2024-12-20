@@ -35,9 +35,8 @@ const CartComponent = () => {
           {cart.map((item) => (
             <li key={item.productId}>
             <div>
-            <p>{item.productName}</p>
+            <p>{item.productName} ${item.productPrice}</p>
             <p>Cantidad: {item.quantity}</p>
-            <p>Precio: ${item.productPrice}</p>
             <p>Subtotal: ${item.quantity * item.productPrice}</p>
               <div style={{ display: 'flex', gap: '5px' }}>
               <button onClick={() => handleUpdateQuantity(item.productId, item.quantity + 1)}>

@@ -6,6 +6,7 @@ import ProtectedRoute from "./Components/ProtectedRoute.jsx"
 import ValidateMail from "./Components/Registro/ValidateMail.jsx"
 import Navbar from "./Components/Navbar/Navbar.jsx"
 import { CategoryScreen, CreateScreen, DetailScreen, ForgotPasswordScreen, Home, LoginScreen, MyProductsScreen, RecoveryPasswordScreen, RegisterScreen, UpdateScreen, AllProductsScreen, ValidateEmailScreen } from "./Screens/index.js"
+import Footer from "./Components/Footer/Footer.jsx"
 
 const App = () => {
 
@@ -30,6 +31,7 @@ const App = () => {
         <Route path="/admin" element={<MyProductsScreen setForceUpdate={setForceUpdate} />}/>
         </Route>
       </Routes>
+      <Footer />
     </>
   )
 }

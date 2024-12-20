@@ -1,17 +1,17 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import Form from '../Form/Form.jsx'
-import { useParams, useNavigate, Link } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import useFormErrors from '../../Hooks/useFormErrors'
 import { getAuthenticatedHeaders } from '../../../utils/fetching'
 import UseProductDetail from '../../Hooks/UseProductsDetail'
-import UseCategories from '../../Hooks/UseCategories'
+import { CartContext } from '../../Context/CartContext'
 
 const ProductUpdate = ({ setForceUpdate }) => {
     const { product_id } = useParams()
     const navigate = useNavigate()
 
-
-    const { product_detail_state, product_detail_loading_state } = UseProductDetail(product_id)
+    const { setUpdateCart } = useContext(CartContext)
+    const { product_detail_state } = UseProductDetail(product_id)
 
     const [formState, setFormState] = useState({
         title: '',
@@ -27,14 +27,7 @@ const ProductUpdate = ({ setForceUpdate }) => {
 
     useEffect(() => {
         if (product_detail_state) {
-            setFormState({
-                title: product_detail_state.title,
-                description: product_detail_state.description,
-                price: product_detail_state.price,
-                stock: product_detail_state.stock,
-                category: product_detail_state.category,
-                image_base64: product_detail_state.image_base64,
-            });
+            setFormState(product_detail_state);
         }
     }, [product_detail_state]);
 
@@ -53,7 +46,8 @@ const ProductUpdate = ({ setForceUpdate }) => {
                 // Manejar errores si los hay
                 return handleErrors(data.message);
             } else {
-                setForceUpdate(true)
+                setUpdateCart(prev => !prev)
+                setForceUpdate(prev => !prev)
                 navigate('/')
             }
         } catch (error) {
@@ -71,7 +65,7 @@ const ProductUpdate = ({ setForceUpdate }) => {
             type: 'input',
             props: {
                 placeholder: 'Ingresa tu imagen',
-                id: 'image',
+                id: 'image_base64',
                 name: 'image_base64',
                 type: 'file',
             },
@@ -169,7 +163,6 @@ const ProductUpdate = ({ setForceUpdate }) => {
             errorState={errorState}
             buttonText='Actualizar producto'
         />
-        <Link to='/'>Volver</Link>
     </div>
     )
 }

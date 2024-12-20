@@ -33,7 +33,7 @@ const ProductCreator = ({setForceUpdate}) => {
         // Manejar errores si los hay
         return handleErrors(data.data.errors);
       }else{
-            setForceUpdate(true);
+            setForceUpdate(prev => !prev);
             navigate('/');
       }
 

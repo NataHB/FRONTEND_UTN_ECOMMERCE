@@ -42,7 +42,7 @@ const Home = () => {
             </div>
         </section>
         <section className='destacado'>
-            <h2>Productos destacados</h2>
+            <h2>Nuestros productos</h2>
             <ProductList />
         </section>
         </main>

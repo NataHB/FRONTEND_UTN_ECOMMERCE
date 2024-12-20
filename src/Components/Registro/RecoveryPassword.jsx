@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import Form from '..//Form/Form.jsx';
 import {jwtDecode} from 'jwt-decode';
 import UseFormErrors from '../../Hooks/useFormErrors'; 
@@ -86,7 +86,6 @@ const RecoveryPasswordScreen = () => {
         buttonText="Restablecer contraseña"
       >
         <button type="submit">Restablecer</button>
-        <Link to="/login">Iniciar sesión</Link>
       </Form>
     </div>
   );
