@@ -4,7 +4,14 @@ const useFormErrors = () => {
     const [errorState, setErrors] = useState({
         email: '',
         password: '',
-        name: ''
+        name: '',
+        title: '',
+        description: '',
+        price: '',
+        stock: '',
+        category: '',
+        seller_id: '',
+        message: ''
     })
 
     const handleErrors = (errors) => {

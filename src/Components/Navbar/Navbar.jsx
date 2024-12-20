@@ -1,58 +1,79 @@
-import React from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { useEffect, useContext } from 'react';
 import UseCategories from '../../Hooks/UseCategories';
-import './Navbar.css';
 import { AuthContext } from '../../Context/AuthContext';
 import CartComponent from '../Carrito/CartComponent';
+import './Navbar.css';
 
-const Navbar = ({ forceUpdate, setForceUpdate }) => {
+const Navbar = ({ forceUpdate }) => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { categories, loading, error, reloadCategories } = UseCategories();
-  const { is_authenticated } = useContext(AuthContext);
+  const { is_authenticated, logout } = useContext(AuthContext);
 
   useEffect(() => {
     reloadCategories();
   }, [forceUpdate]);
 
-  if (loading) return <div>Cargando categorías...</div>;
+  const toggleMenu = () => {
+    setIsMenuOpen((prev) => !prev);
+  };
+
   if (error) return <div>{error}</div>;
-  
-  //si estas logueado mostrar para desloguear
-
-
 
   return (
-    <nav>
-      <Link to="/"><h1>Logo</h1></Link>
-      <div>
-
+    <nav className="navbar">
+      <div className="navbar-header">
+        <Link to="/" className="logo">
+          <h1>Logo</h1>
+        </Link>
+        <button className="hamburger" onClick={toggleMenu}>
+          {isMenuOpen ? '✖' : '☰'}
+        </button>
       </div>
-      <ul className="nav-links">
-        <li><Link to="/">Home</Link></li>
-        <li><Link to="/products">Productos</Link></li>
+
+      <ul className={`nav-links ${isMenuOpen ? 'open' : ''}`}>
+        <li><Link to="/" onClick={() => setIsMenuOpen(false)}>Home</Link></li>
+        <li><Link to="/products" onClick={() => setIsMenuOpen(false)}>Productos</Link></li>
         <li className="dropdown">
           <h4>Categorias</h4>
           <ul className="dropdown-menu">
-            {categories.map((category) => (
-              <li key={category}>
-                <Link to={`/category/${category}`}>{category}</Link>
-              </li>
-            ))}
+            {loading ? (
+              <li>Cargando categorías...</li>
+            ) : (
+              categories.map((category) => (
+                <li key={category}>
+                  <Link to={`/category/${category}`} onClick={() => setIsMenuOpen(false)}>
+                    {category}
+                  </Link>
+                </li>
+              ))
+            )}
           </ul>
         </li>
-        <li><Link to="/login">Login</Link></li>
-        <li><Link to="/register">Register</Link></li>
-        {is_authenticated && (  // Solo mostrar estos enlaces si el usuario está autenticado
-      <li className="dropdown">
-          <h4>Admin</h4>
-          <ul className="dropdown-menu">
-            <li><Link to="/create">Crear producto</Link></li>
-            <li><Link to="/admin">Mis productos</Link></li>
-          </ul>
-        </li>
+        {!is_authenticated ? (
+          <>
+            <li><Link to="/login" onClick={() => setIsMenuOpen(false)}>Login</Link></li>
+            <li><Link to="/register" onClick={() => setIsMenuOpen(false)}>Register</Link></li>
+          </>
+        ) : (
+          <>
+            <li className="dropdown">
+              <h4>Perfil</h4>
+              <ul className="dropdown-menu">
+                <li><Link to="/create" onClick={() => setIsMenuOpen(false)}>Crear producto</Link></li>
+                <li><Link to="/admin" onClick={() => setIsMenuOpen(false)}>Mis productos</Link></li>
+              </ul>
+            </li>
+            <li>
+              <Link to="/login" onClick={() => { logout(); setIsMenuOpen(false); }}>
+                Logout
+              </Link>
+            </li>
+          </>
         )}
-        
-        <li className="dropdown"><CartComponent setForceUpdate={setForceUpdate} forceUpdate={forceUpdate}/></li>
+        <li className="dropdown">
+          <CartComponent />
+        </li>
       </ul>
     </nav>
   );

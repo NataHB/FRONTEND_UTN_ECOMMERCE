@@ -162,7 +162,6 @@ const ProductUpdate = ({ setForceUpdate }) => {
 
     return (
     <div>
-        <h1>Actualizar producto</h1>
         <Form 
             initial_form_state={formState}
             action={handleUpdateProduct}

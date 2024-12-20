@@ -65,8 +65,6 @@ const ForgotPassword = () => {
 
   return (
     <div>
-      <h1>Restablecer contraseña</h1>
-
       <Form
         action={handleSubmit}
         form_fields={form_fields}

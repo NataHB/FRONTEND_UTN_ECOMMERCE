@@ -79,7 +79,6 @@ const Login = () => {
 
   return (
     <div className="form-container">
-      <h1>Login</h1>
       <Form
         initial_form_state={initial_form_state}
         action={handleLogin}

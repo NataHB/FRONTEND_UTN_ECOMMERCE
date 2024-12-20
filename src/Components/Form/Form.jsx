@@ -5,24 +5,20 @@ import './Form.css';
 const Form = ({ initial_form_state, action, form_fields, errorState, buttonText }) => {
   const { formState, handleChange } = useForm(initial_form_state);
   
-  // Estado para manejar la previsualización de la imagen
   const [imagePreview, setImagePreview] = useState(null);
 
-  // Manejo del cambio para los archivos (imágenes)
   const handleFileChange = (e) => {
     const file = e.target.files[0];
     if (file) {
-      // Convertir la imagen a Base64 (por ejemplo) para enviarla
       const reader = new FileReader();
       reader.onloadend = () => {
-        // Guardamos el archivo como Base64 en el estado
         handleChange({
           target: {
             name: e.target.name,
-            value: reader.result // Base64 de la imagen
+            value: reader.result 
           }
         });
-        setImagePreview(reader.result); // Establecer la previsualización de la imagen
+        setImagePreview(reader.result); 
       };
       reader.readAsDataURL(file);
     }

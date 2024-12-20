@@ -4,7 +4,13 @@ import { RecoveryPassword } from '../../Components/Registro/index.js'
 const RecoveryPasswordScreen = () => {
   return (
     <main>
-        <RecoveryPassword />
+      <section className='form-screen'>
+        <div className='form-screen-container'>
+          <h1>Cambiar contraseña</h1>
+          <RecoveryPassword />
+        </div>
+        <img src="/img/creative.jpg" alt="" />
+      </section>
     </main>
   )
 }

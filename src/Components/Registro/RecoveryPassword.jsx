@@ -78,7 +78,6 @@ const RecoveryPasswordScreen = () => {
 
   return (
     <div>
-      <h1>Modifica tu contraseña</h1>
       <Form
         action={actionRecoveryPassword}
         form_fields={form_fields}

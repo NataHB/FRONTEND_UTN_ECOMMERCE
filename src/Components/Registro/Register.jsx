@@ -1,4 +1,5 @@
 import React from 'react';
+import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import UseForm from '../../Hooks/UseForm';
 import UseFormErrors from '../../Hooks/useFormErrors';
@@ -6,6 +7,7 @@ import Form from '../Form/Form.jsx';
 
 const Register = () => {
   const navigate = useNavigate();
+  const [generalError, setGeneralError] = useState('');
 
   // Estado inicial del formulario
   const initial_form_state = {
@@ -23,14 +25,23 @@ const Register = () => {
         body: JSON.stringify(formState),
       });
 
-      const data = await response.json();
+      const data = await response.json()
       console.log(data);
 
+
+      if (!data.ok) {
       if (data.data.errors) {
-        handleErrors(data.data.errors);
-      } else {
-        navigate('/login');
+        handleErrors(data.data.errors)
       }
+
+      if (data.code === 'EMAIL_EXISTS') {
+        setGeneralError(data.message);
+      }
+    } else {
+      navigate('/login')
+    }
+      
+      
     } catch (error) {
       console.error('Error en la solicitud:', error);
     }
@@ -93,7 +104,6 @@ const Register = () => {
 
   return (
     <div className="form-container">
-      <h1>Register</h1>
       <Form
         initial_form_state={initial_form_state}
         action={handleRegister}
@@ -101,6 +111,7 @@ const Register = () => {
         errorState={errorState}
         buttonText="Registrarse"
       />
+      {generalError && <p style={{ color: '#471248' }}>{generalError}</p>}
       <Link to="/login">Login</Link>
     </div>
   );

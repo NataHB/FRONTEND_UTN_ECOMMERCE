@@ -1,38 +1,40 @@
 import React from 'react'
+import { useState, useEffect } from 'react'
+import { useNavigate, useParams } from 'react-router-dom'
 
 const ValidateMail = () => {
     const {validation_token} = useParams()
-    
+    const navigate = useNavigate();
     const [validation_mail, setValidation_mail] = useState(false)
 
-    useEffect(() => {
-      const validateMail = async () => {
+      const verifyMail = async (validation_token) => {
         try {
-          const response = await fetch(`${import.meta.env.VITE_API_URL}/auth/verify-email/${validation_token}`, {
-            method: 'GET',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-          });
+          const response = await fetch(`${import.meta.env.VITE_API_URL}/auth/verify-email/${validation_token}`
+          )
           const data = await response.json();
-          if (!data.ok) {
-            setError(data.error);
-            setLoading(false);
+          console.log (data);
+          if (data.message == 'Error al verificar el correo') {
+            setError(data.message);
             return;
           }
           setValidation_mail(true);
-          setLoading(false);
+          navigate('/login');
         } catch (err) {
-          setError('Error al obtener las categorías');
-          setLoading(false);
+          setError(err);
         }
       };
-      validateMail();
+
+      useEffect(() => {
+      verifyMail(validation_token);
     }, []);
 
   return (
-    <div>ValidateMail</div>
+    <div>
+      {
+        validation_mail ? <span>Correo verificado</span> : <span>Correo no verificado</span>
+      }
+    </div>
   )
 }
 
-export default ValidateMail
+export default ValidateMail;

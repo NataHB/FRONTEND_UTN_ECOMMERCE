@@ -1,15 +1,15 @@
-.create{
+.form-screen{
     display: flex;
     height: 100vh;
 }
 
-.create img{
+.form-screen img{
     width: 50%;
     height: 100%;
     object-fit: cover;
 }
 
-.create-container{
+.form-screen-container{
     display: flex;
     gap: 25px;
     flex-direction: column;
@@ -19,11 +19,11 @@
 }
 
 @media screen and (max-width: 800px) {
-    .create img{
+    .form-screen img{
         display: none;
     }
 
-    .create-container{
+    .form-screen-container{
         width: 100%;
     }
 }

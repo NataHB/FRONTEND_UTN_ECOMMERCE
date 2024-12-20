@@ -11,17 +11,6 @@ form{
     gap: 5px;
 }
 
-button{
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 14px;
-    color: #ffffff;
-    font-weight: 500;
-    background: #ff7700;
-}
-
 input{
     padding: 10px;
     border-radius: 20px;
@@ -33,11 +22,5 @@ label{
     padding: 3px;
     font-size: 14px;
     padding-bottom: 5px;
-}
-
-button a{
-    color: #ffffff;
-    font-size: 14px;
-    padding: 20px;
 }
 

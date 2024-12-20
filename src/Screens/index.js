@@ -8,6 +8,7 @@ import RecoveryPasswordScreen from "./RecoveryPasswordScreen/RecoveryPasswordScr
 import UpdateScreen from "./UpdateScreen/UpdateScreen";
 import RegisterScreen from "./RegisterScreen/RegisterScreen";
 import CreateScreen from "./CreateScreen/CreateScreen";
+import ValidateEmailScreen from "./ValidateEmailScreen/ValidateEmailScreen";
 import ForgotPasswordScreen from "./ForgotPasswordScreen/ForgotPasswordScreen";
 
 export { 
@@ -21,4 +22,5 @@ export {
     UpdateScreen, 
     RegisterScreen, 
     CreateScreen,
+    ValidateEmailScreen,
     ForgotPasswordScreen };

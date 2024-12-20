@@ -1,60 +1,124 @@
 /* Navbar general */
-nav {
-    display: flex;
-    justify-content: space-between;
+.navbar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #ffffff;
+  padding: 20px 10%;
+  font-size: 15px;
+  font-weight: 500;
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  box-shadow: 0 2px 9px #00000039;
+  z-index: 1000;
+}
+
+/* Navbar header */
+.navbar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Logo */
+.logo h1 {
+  color: #000000;
+  text-decoration: none;
+}
+
+/* Botón de menú hamburguesa */
+.hamburger {
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  color: #000000;
+  cursor: pointer;
+  display: block;
+}
+
+/* Links principales */
+.nav-links {
+  list-style: none;
+  display: none; /* Oculto por defecto en pantallas pequeñas */
+  flex-direction: column;
+  gap: 1rem;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-links.open {
+  display: flex;
+}
+
+.nav-links li {
+  position: relative;
+}
+
+.nav-links a {
+  color: #000000;
+  padding: 10px;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+/* Dropdown general */
+.dropdown-menu {
+  list-style: none;
+  position: absolute;
+  top: 102%;
+  left: 0;
+  background-color: #ffffff;
+  display: none;
+  padding: 20px 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 9px #00000039;
+  z-index: 1000;
+}
+
+.dropdown-menu li {
+  cursor: pointer;
+  padding: 15px 15px;
+}
+
+.dropdown-menu li a {
+  color: #000000;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+/* Responsividad */
+@media (min-width: 768px) {
+  .navbar {
+    flex-direction: row;
     align-items: center;
-    background-color: #ffffff;
-    padding: 20px 40px;
-    font-size: 15px;
-    font-weight: 500;
-    position: sticky;
-    top: 0;
-    left: 0;
-    right: 0;
-    box-shadow: 0 2px 9px #00000039;
-    z-index: 1000;
+    padding: 20px 5%;
   }
-  
+
+  .hamburger {
+    display: none; /* Oculta el menú hamburguesa en pantallas grandes */
+  }
+
   .nav-links {
-    list-style: none;
-    display: flex;
+    display: flex; /* Links visibles en línea */
+    flex-direction: row;
     gap: 1rem;
   }
-  
-  .nav-links a {
-    color: #000000;
-    padding: 10px;
-    font-size: 14px;
-    text-decoration: none;
-  }
-  
-  .nav-links li {
-    position: relative;
-  }
-  
-  /* Sublista */
-  .dropdown-menu {
-    list-style: none;
+
+  .nav-links .dropdown-menu {
     position: absolute;
-    left: -45px;;
+    right: 0;
+    left: auto;
     top: 102%;
-    background-color: #ffffff;
+    background: #ffffff;
+    padding: 10px;
     display: none;
-    padding: 20px 10px;
-    border-radius: 5px;
-    z-index: 1000;
   }
-  
-  .dropdown-menu li {
-    cursor: pointer;
-    padding: 15px 5px;
+
+  .nav-links .dropdown:hover .dropdown-menu {
+    display: block; /* Muestra el dropdown al hacer hover */
   }
-  
-  .dropdown-menu li a {
-    color: #000000;
-  }
-  
-  .dropdown:hover .dropdown-menu {
-    display: block;
-  }
-  
+}

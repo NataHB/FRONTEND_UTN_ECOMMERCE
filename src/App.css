@@ -20,6 +20,23 @@ body{
     background-color: #f1f1f1;
 }
 
+button{
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #ffffff;
+    font-weight: 500;
+    background: #ff7700;
+}
+
+button a{
+    color: #ffffff;
+    font-size: 14px;
+    padding: 20px;
+}
+
 .form-container{
     display: flex;
     flex-direction: column;

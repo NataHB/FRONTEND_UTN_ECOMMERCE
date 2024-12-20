@@ -10,9 +10,9 @@ export const CartProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(false);
   const { is_authenticated } = useContext(AuthContext);
   const navigate = useNavigate();
+  const [updateCart, setUpdateCart] = useState(false);
   const userId = sessionStorage.getItem("accessToken"); // Esto está basado en que el `accessToken` está guardado en sessionStorage
 
-  // Cargar el carrito al iniciar
   useEffect(() => {
     const obtenerCart = async () => {
       if (!is_authenticated) return; 
@@ -31,9 +31,11 @@ export const CartProvider = ({ children }) => {
     };
 
     obtenerCart();
-  }, [is_authenticated, userId]);
+    if (updateCart) {
+      setUpdateCart(false);
+    }
+  }, [is_authenticated, userId, updateCart]);
 
-  // Agregar producto al carrito
   const addToCart = async (productId, quantity) => {
     if (isLoading) return;
 
@@ -48,11 +50,11 @@ export const CartProvider = ({ children }) => {
       const response = await fetch(`${import.meta.env.VITE_API_URL}/cart/cart/add`, {
         method: "POST",
         body: JSON.stringify({ productId, quantity }),
-        headers: getAuthenticatedHeaders(), // Se añaden las cabeceras con el token
+        headers: getAuthenticatedHeaders(), 
       });
       const data = await response.json();
       if (data.data.cart) {
-        setCart(data.data.cart); // Se agrega el producto al carrito
+        setCart(data.data.cart); 
         setIsLoading(false);
       }
     } catch (error) {
@@ -60,17 +62,16 @@ export const CartProvider = ({ children }) => {
     }
   };
 
-  // Eliminar producto del carrito
   const removeFromCart = async (productId) => {
     try {
       const response = await fetch(`${import.meta.env.VITE_API_URL}/cart/cart/remove`, {
         method: "DELETE",
         body: JSON.stringify({ productId }),
-        headers: getAuthenticatedHeaders(), // Se añaden las cabeceras con el token
+        headers: getAuthenticatedHeaders(), 
       });
       const data = await response.json();
       if (data.data.cart) {
-        setCart(data.data.cart.filter((item) => item.productId !== productId) // Filtramos el producto eliminado
+        setCart(data.data.cart.filter((item) => item.productId !== productId)
         );
       }
     } catch (error) {
@@ -78,19 +79,18 @@ export const CartProvider = ({ children }) => {
     }
   };
 
-  // Actualizar cantidad del producto en el carrito
   const updateQuantity = async (productId, quantity) => {
     try {
       const response = await fetch(`${import.meta.env.VITE_API_URL}/cart/cart/update`, {
         method: "PUT",
         body: JSON.stringify({ productId, quantity }),
-        headers: getAuthenticatedHeaders(), // Se añaden las cabeceras con el token
+        headers: getAuthenticatedHeaders(), 
       })
       const data = await response.json();
       if (data.data.cart) {
         setCart(data.data.cart.map((item) =>
             item.productId === productId
-              ? { ...item, quantity } // Actualizamos la cantidad
+              ? { ...item, quantity }
               : item
           )
         )
@@ -100,8 +100,17 @@ export const CartProvider = ({ children }) => {
     }
   }
 
+  const getTotal = () => {
+    return cart.reduce((total, item) => {
+      const price = parseFloat(item.productPrice)
+      const quantity = parseInt(item.quantity, 10)  
+      return total + price * quantity;
+    }, 0).toFixed(2);
+  };
+  
+
   return (
-    <CartContext.Provider value={{ cart, addToCart, removeFromCart, updateQuantity }}>
+    <CartContext.Provider value={{ cart, addToCart, removeFromCart, updateQuantity, updateCart, setUpdateCart, getTotal }}>
       {children}
     </CartContext.Provider>
   );

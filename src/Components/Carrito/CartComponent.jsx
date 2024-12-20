@@ -1,14 +1,17 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { CartContext } from '../../Context/CartContext';
+import { AuthContext } from '../../Context/AuthContext';
 import { useContext, useEffect } from 'react';
 import '../Navbar/Navbar.css';
 
-const CartComponent = ({ setForceUpdate, forceUpdate }) => {
-  const { cart, removeFromCart, updateQuantity } = useContext(CartContext);
+const CartComponent = () => {
+  const { cart, removeFromCart, updateQuantity, getTotal } = useContext(CartContext);
+  const { is_authenticated } = useContext(AuthContext);
 
   useEffect(() => {
-    console.log(cart)
-  }, [forceUpdate]);
+    console.log('Carrito actualizado:', cart);
+  }, [cart]);
 
   const handleRemove = (productId) => {
     removeFromCart(productId);
@@ -27,22 +30,29 @@ const CartComponent = ({ setForceUpdate, forceUpdate }) => {
           No tienes productos en el carrito
           </li>
         </ul>
-      ) : (
+      ) : is_authenticated && (
         <ul className='dropdown-menu'>
           {cart.map((item) => (
-            
             <li key={item.productId}>
             <div>
             <p>{item.productName}</p>
             <p>Cantidad: {item.quantity}</p>
-            <button onClick={() => handleRemove(item.productId)}>Eliminar</button>
-            <button onClick={() => handleUpdateQuantity(item.productId, item.quantity + 1)}>
-              Incrementar cantidad
-            </button>
+            <p>Precio: ${item.productPrice}</p>
+            <p>Subtotal: ${item.quantity * item.productPrice}</p>
+              <div style={{ display: 'flex', gap: '5px' }}>
+              <button onClick={() => handleUpdateQuantity(item.productId, item.quantity + 1)}>
+                +
+              </button>
+              <button onClick={() => handleUpdateQuantity(item.productId, item.quantity - 1)}>
+                -
+              </button>
+              <button onClick={() => handleRemove(item.productId)}>Eliminar</button>
+            </div>
           </div>
           </li>
-          
         ))} 
+        <p>Total: ${getTotal()}</p>
+        <Link to="/"><button>Comprar</button></Link>
         </ul>
       )}
       </>
