@@ -21,22 +21,22 @@ const Home = () => {
             <div className='categorias-section-container'>
                 <div className='categoria-container'>
                     <div className='categoria'>
-                        <img src='/img/filter.hombre.jpg'/>
-                        <button><Link to={'/products'}>Ver colección</Link></button>
+                        <img src='/img/filter.hombre.jpg' alt='Abrigos'/>
+                        <button><Link to={'/category/Abrigos'}>Abrigos</Link></button>
                     </div>
                     <div className='categoria'>
-                        <img src='/img/filter.mujer.jpg'/>
-                        <button><Link to={'/products'}>Ver colección</Link></button>
+                        <img src='/img/filter.mujer.jpg' alt='Sueter'/>
+                        <button><Link to={'/category/Sueters'}>Sueters</Link></button>
                     </div>
                 </div>
                 <div className='categoria-container'>
                     <div className='categoria'>
-                        <img src='/img/filter.accesorios.jpg'/>
-                        <button><Link to={'/products'}>Ver colección</Link></button>                    
+                        <img src='/img/filter.remeras.jpg' alt='Remeras'/>
+                        <button><Link to={'/category/Remeras'}>Remeras</Link></button>                    
                     </div>
                 <div className='categoria'>
-                    <img src='/img/filter.hombre.jpg'/>
-                    <button><Link to={'/products'}>Ver colección</Link></button>                
+                    <img src='/img/filter.camisas.jpg' alt='Camisas'/>
+                    <button><Link to={'/category/Camisas'}>Camisas</Link></button>                
                 </div>
                 </div>
             </div>

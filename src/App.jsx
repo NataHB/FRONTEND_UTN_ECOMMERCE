@@ -25,6 +25,7 @@ const App = () => {
         <Route path="/products" element={<AllProductsScreen />}/>
 				<Route path="/product/:product_id" element={<DetailScreen/>}/>
         <Route path="/category/:category" element={<CategoryScreen/>}/>
+        <Route path="*" element={<Home />} />
         <Route element={<ProtectedRoute/>}>
         <Route path="/create" element={<CreateScreen setForceUpdate={setForceUpdate}/>}/>
         <Route path="/update/:product_id" element={<UpdateScreen setForceUpdate={setForceUpdate}/>}/>

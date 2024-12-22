@@ -1,5 +1,41 @@
 footer{
     display: flex;
+    flex-direction: column;
     background-color: #ffffff;
-    padding: 50px 50px;
+    padding: 50px 5% 20px 5%;
+    gap: 50px;
+    font-size: 15px;
+}
+
+.redes-sociales{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.redes{
+    display: flex;
+    gap: 20px;
+}
+
+.redes i{
+    font-size: 24px;
+}
+
+footer p{
+    font-size: 13px;
+    text-align: center;
+}
+
+@media screen and (max-width: 1000px) {
+    footer{
+        padding: 30px 10%;
+
+    }
+
+    .redes-sociales{
+        flex-direction: column;
+        gap: 30px;
+    }
+    
 }

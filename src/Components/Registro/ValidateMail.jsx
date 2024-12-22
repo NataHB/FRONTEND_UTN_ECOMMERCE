@@ -1,11 +1,12 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
+import '../../Screens/AllProductsScreen.css'
+
 
 const ValidateMail = () => {
     const {validation_token} = useParams()
     const navigate = useNavigate();
-    const [validation_mail, setValidation_mail] = useState(false)
 
       const verifyMail = async (validation_token) => {
         try {
@@ -14,13 +15,13 @@ const ValidateMail = () => {
           const data = await response.json();
           console.log (data);
           if (data.message == 'Error al verificar el correo') {
-            setError(data.message);
+            console.log(data.message);
             return;
           }
-          setValidation_mail(true);
           navigate('/login');
         } catch (err) {
-          setError(err);
+          console.log(err);
+          return
         }
       };
 
@@ -29,10 +30,10 @@ const ValidateMail = () => {
     }, []);
 
   return (
-    <div>
-      {
-        validation_mail ? <span>Correo verificado</span> : <span>Correo no verificado</span>
-      }
+    <div className='all-products'>
+      <div className='all-products-container'>
+        <h1>Verificando tu correo</h1>
+      </div>
     </div>
   )
 }

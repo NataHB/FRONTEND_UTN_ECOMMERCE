@@ -7,7 +7,6 @@ import UseFormErrors from '../../Hooks/useFormErrors';
 const RecoveryPasswordScreen = () => {
     const navigate = useNavigate();
   const { reset_token } = useParams();
-  console.log('Token de reset de contraseña:', reset_token);
 
   // Decodificación del token
   try {

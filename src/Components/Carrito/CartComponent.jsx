@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { CartContext } from '../../Context/CartContext';
 import { AuthContext } from '../../Context/AuthContext';
+import { HiOutlineShoppingCart } from "react-icons/hi";
 import { useContext, useEffect } from 'react';
 import '../Navbar/Navbar.css';
 
@@ -23,11 +24,11 @@ const CartComponent = () => {
 
   return (
       <>
-      <h4>Tu Carrito</h4>
+      <h4 style={{fontSize: '20px'}}><HiOutlineShoppingCart /></h4>
       {cart.length === 0 ? (
         <ul className='dropdown-menu'>
           <li>
-          No tienes productos en el carrito
+          No hay productos en el carrito
           </li>
         </ul>
       ) : is_authenticated && (

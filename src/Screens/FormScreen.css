@@ -1,5 +1,10 @@
 .form-screen{
     display: flex;
+    height: 100vh;
+}
+
+.form-screen-product{
+    display: flex;
 }
 
 .form-screen img{

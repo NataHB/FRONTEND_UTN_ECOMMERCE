@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import UseCategories from '../../Hooks/UseCategories';
 import { AuthContext } from '../../Context/AuthContext';
 import CartComponent from '../Carrito/CartComponent';
+import { HiOutlineMenu } from "react-icons/hi";
+import { HiOutlineX } from "react-icons/hi";
 import './Navbar.css';
 
 const Navbar = ({ forceUpdate }) => {
@@ -24,10 +26,10 @@ const Navbar = ({ forceUpdate }) => {
     <nav className="navbar">
       <div className="navbar-header">
         <Link to="/" className="logo">
-          <h1>Logo</h1>
+          <h1>Mi tienda</h1>
         </Link>
         <button className="hamburger" onClick={toggleMenu}>
-          {isMenuOpen ? '✖' : '☰'}
+          {isMenuOpen ? <HiOutlineX /> : <HiOutlineMenu  />} 
         </button>
       </div>
 
@@ -53,7 +55,6 @@ const Navbar = ({ forceUpdate }) => {
         {!is_authenticated ? (
           <>
             <li><Link to="/login" onClick={() => setIsMenuOpen(false)}>Login</Link></li>
-            <li><Link to="/register" onClick={() => setIsMenuOpen(false)}>Register</Link></li>
           </>
         ) : (
           <>

@@ -6,7 +6,7 @@ import '../FormScreen.css'
 const UpdateScreen = ({setForceUpdate}) => {
   return (
     <main>
-        <section className='form-screen'>
+        <section className='form-screen-product'>
         <div className='form-screen-container'>
           <h1>Editar producto</h1>
           <ProductUpdate setForceUpdate={setForceUpdate}/>
