@@ -33,4 +33,3 @@ En figma hice un prototipo simple de guia para poder encarar mejor el estilado h
 
 Quiero agradecerte de corazón por tu guía y paciencia. Cada desafío fue una oportunidad de aprendizaje, y el apoyo que siempre nos diste me ayudó a dar lo mejor de mí. Gracias por todo el conocimiento compartido y por hacer que esta cursada fuera una experiencia tan copada. Sigo aprendiendo gracias a vos!
 
-## PD: Si existiera la oportunidad de formar parte del equipo de aprendizaje el año que viene estaría super encantada. 
