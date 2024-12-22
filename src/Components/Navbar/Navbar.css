@@ -57,6 +57,11 @@
 
 .nav-links li {
   position: relative;
+  cursor: pointer;
+}
+
+.nav-links li:hover {
+  color: #ff7700;
 }
 
 .nav-links a {
@@ -76,15 +81,20 @@
   list-style: none;
   position: absolute;
   max-height: 70vh;
-  overflow: scroll;
+  overflow-y: auto;
   top: 102%;
   left: 0;
   background-color: #ffffff;
-  display: none;
+  display: none; /* Por defecto cerrado */
   padding: 20px 10px;
   border-radius: 8px;
   z-index: 1000;
 }
+
+.dropdown-menu.open {
+  display: block; /* Se abre si la clase 'open' está presente */
+}
+
 
 .dropdown-menu li {
   cursor: pointer;
@@ -93,10 +103,6 @@
 
 .dropdown-menu li a {
   color: #000000;
-}
-
-.dropdown:hover .dropdown-menu {
-  display: block;
 }
 
 /* Responsividad */
@@ -128,7 +134,7 @@
     display: none;
   }
 
-  .nav-links .dropdown:hover .dropdown-menu {
-    display: block; /* Muestra el dropdown al hacer hover */
+  .nav-links .dropdown-menu.open {
+    display: block;
   }
 }

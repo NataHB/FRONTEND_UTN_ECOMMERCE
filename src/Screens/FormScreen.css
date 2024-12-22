@@ -7,6 +7,11 @@
     display: flex;
 }
 
+.form-screen-product img{
+    width: 50%;
+    object-fit: cover;
+}
+
 .form-screen img{
     width: 50%;
     object-fit: cover;
@@ -23,6 +28,10 @@
 
 @media screen and (max-width: 800px) {
     .form-screen img{
+        display: none;
+    }
+
+    .form-screen-product img{
         display: none;
     }
 

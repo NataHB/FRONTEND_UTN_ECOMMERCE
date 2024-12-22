@@ -23,6 +23,8 @@ const ProductList = () => {
                 : (
                     products_error_state
                     ? <span>{products_error_state}</span>
+                    : products_state.length === 0
+                    ? <span>No hay productos</span>
                     : <div className='product-list' key={products_state}>
                         {
                             products_state.map(

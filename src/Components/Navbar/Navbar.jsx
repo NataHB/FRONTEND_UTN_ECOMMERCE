@@ -9,6 +9,7 @@ import './Navbar.css';
 
 const Navbar = ({ forceUpdate }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState(null); // Maneja dropdowns abiertos
   const { categories, loading, error, reloadCategories } = UseCategories();
   const { is_authenticated, logout } = useContext(AuthContext);
 
@@ -20,6 +21,10 @@ const Navbar = ({ forceUpdate }) => {
     setIsMenuOpen((prev) => !prev);
   };
 
+  const toggleDropdown = (menu) => {
+    setOpenDropdown((prev) => (prev === menu ? null : menu));
+  };
+
   if (error) return <div>{error}</div>;
 
   return (
@@ -29,7 +34,7 @@ const Navbar = ({ forceUpdate }) => {
           <h1>Mi tienda</h1>
         </Link>
         <button className="hamburger" onClick={toggleMenu}>
-          {isMenuOpen ? <HiOutlineX /> : <HiOutlineMenu  />} 
+          {isMenuOpen ? <HiOutlineX /> : <HiOutlineMenu />}
         </button>
       </div>
 
@@ -37,11 +42,12 @@ const Navbar = ({ forceUpdate }) => {
         <li><Link to="/" onClick={() => setIsMenuOpen(false)}>Home</Link></li>
         <li><Link to="/products" onClick={() => setIsMenuOpen(false)}>Productos</Link></li>
         <li className="dropdown">
-          <h4>Categorias</h4>
-          <ul className="dropdown-menu">
-            {loading ? (
-              <li>Cargando categorías...</li>
-            ) : (
+          <h4 onClick={() => toggleDropdown('categorias')}>Categorías</h4>
+          <ul className={`dropdown-menu ${openDropdown === 'categorias' ? 'open' : ''}`}>
+            {loading 
+            ? <li>Cargando categorías...</li>
+            : categories.length === 0 ? <li>No hay categorías</li> 
+            : (
               categories.map((category) => (
                 <li key={category}>
                   <Link to={`/category/${category}`} onClick={() => setIsMenuOpen(false)}>
@@ -59,8 +65,8 @@ const Navbar = ({ forceUpdate }) => {
         ) : (
           <>
             <li className="dropdown">
-              <h4>Perfil</h4>
-              <ul className="dropdown-menu">
+              <h4 onClick={() => toggleDropdown('perfil')}>Perfil</h4>
+              <ul className={`dropdown-menu ${openDropdown === 'perfil' ? 'open' : ''}`}>
                 <li><Link to="/create" onClick={() => setIsMenuOpen(false)}>Crear producto</Link></li>
                 <li><Link to="/admin" onClick={() => setIsMenuOpen(false)}>Mis productos</Link></li>
               </ul>
@@ -73,7 +79,7 @@ const Navbar = ({ forceUpdate }) => {
           </>
         )}
         <li className="dropdown">
-          <CartComponent />
+          <CartComponent openDropdown={openDropdown} toggleDropdown={toggleDropdown} />
         </li>
       </ul>
     </nav>

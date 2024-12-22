@@ -6,7 +6,7 @@ import { HiOutlineShoppingCart } from "react-icons/hi";
 import { useContext, useEffect } from 'react';
 import '../Navbar/Navbar.css';
 
-const CartComponent = () => {
+const CartComponent = ({ toggleDropdown, openDropdown }) => {
   const { cart, removeFromCart, updateQuantity, getTotal } = useContext(CartContext);
   const { is_authenticated } = useContext(AuthContext);
 
@@ -22,20 +22,20 @@ const CartComponent = () => {
     updateQuantity(productId, newQuantity);
   };
 
+
   return (
       <>
-      <h4 style={{fontSize: '20px'}}><HiOutlineShoppingCart /></h4>
+      <h4 onClick={() => toggleDropdown('carrito')} style={{fontSize: '20px'}}><HiOutlineShoppingCart /></h4>
       {cart.length === 0 ? (
-        <ul className='dropdown-menu'>
+        <ul className= {`dropdown-menu ${openDropdown === 'carrito' ? 'open' : ''}`}>
           <li>
           No hay productos en el carrito
           </li>
         </ul>
       ) : is_authenticated && (
-        <ul className='dropdown-menu'>
+        <ul className= {`dropdown-menu ${openDropdown === 'carrito' ? 'open' : ''}`}>
           {cart.map((item) => (
             <li key={item.productId}>
-            <div>
             <p>{item.productName} ${item.productPrice}</p>
             <p>Cantidad: {item.quantity}</p>
             <p>Subtotal: ${item.quantity * item.productPrice}</p>
@@ -48,11 +48,12 @@ const CartComponent = () => {
               </button>
               <button onClick={() => handleRemove(item.productId)}>Eliminar</button>
             </div>
-          </div>
           </li>
         ))} 
-        <p>Total: ${getTotal()}</p>
-        <Link to="/"><button>Comprar</button></Link>
+        <div style={{ padding: '15px'}}>
+          <p>Total: ${getTotal()}</p>
+          <Link to="/"><button>Comprar</button></Link>
+        </div>
         </ul>
       )}
       </>
