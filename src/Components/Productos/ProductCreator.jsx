@@ -8,7 +8,7 @@ const ProductCreator = ({setForceUpdate}) => {
   const navigate = useNavigate();
 
   const initial_form_state = {
-    image_base64: '',
+    image_base64: '' || '/img/default.jpg',
     title: '',
     description: '',
     price: '',
