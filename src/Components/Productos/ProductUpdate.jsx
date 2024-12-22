@@ -27,7 +27,7 @@ const ProductUpdate = ({ setForceUpdate }) => {
 
     useEffect(() => {
         if (product_detail_state) {
-            setFormState(product_detail_state);
+            setFormState(product_detail_state)
         }
     }, [product_detail_state]);
 
@@ -39,12 +39,12 @@ const ProductUpdate = ({ setForceUpdate }) => {
                 body: JSON.stringify(formState),
             });
 
-            const data = await response.json();
-            console.log(data);
+            const data = await response.json()
+            console.log(data)
 
             if (!data.ok) {
                 // Manejar errores si los hay
-                return handleErrors(data.message);
+                return handleErrors(data.message)
             } else {
                 setUpdateCart(prev => !prev)
                 setForceUpdate(prev => !prev)

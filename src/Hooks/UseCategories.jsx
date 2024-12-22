@@ -12,24 +12,23 @@ const UseCategories = () => {
           method: 'GET',
           headers: getAuthenticatedHeaders()
         });
-        const data = await response.json();
+        const data = await response.json()
         if (!data.ok) {
-          setError(data.error);
-          setLoading(false);
-          return;
+          setError(data.error)
+          setLoading(false)
+          return
         }
 
-        // Extraemos correctamente las categorías
-        setCategories(data.data.categories.map((item) => item.category));
-        setLoading(false);
+        setCategories(data.data.categories.map((item) => item.category))
+        setLoading(false)
       } catch (err) {
-        setError('Error al obtener las categorías');
-        setLoading(false);
+        setError('Error al obtener las categorías')
+        setLoading(false)
       }
     };
 
   useEffect(() => {
-    fetchCategories();
+    fetchCategories()
   }, []);
 
   return { categories, 

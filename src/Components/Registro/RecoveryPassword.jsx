@@ -12,12 +12,12 @@ const RecoveryPasswordScreen = () => {
   try {
     console.log(jwtDecode(reset_token));
   } catch (error) {
-    console.error('Error al decodificar el token:', error);
+    console.error('Error al decodificar el token:', error)
   }
 
   // Acción para manejar el cambio de contraseña
   const actionRecoveryPassword = async (form_state) => {
-    console.log('Formulario enviado:', form_state);
+    console.log('Formulario enviado:', form_state)
 
     try {
       const response = await fetch(
@@ -27,16 +27,16 @@ const RecoveryPasswordScreen = () => {
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ password: form_state.password }),
         }
-      );
+      )
 
-      const data = await response.json();
-      console.log('Respuesta del servidor:', data);
+      const data = await response.json()
+      console.log('Respuesta del servidor:', data)
 
       if (!data.ok) {
-        return handleErrors(data);
+        return handleErrors(data)
       }
       else{
-        navigate('/');
+        navigate('/')
       }
 
     } catch (error) {

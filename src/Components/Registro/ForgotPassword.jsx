@@ -23,20 +23,18 @@ const ForgotPassword = () => {
       });
 
       const data = await response.json();
-      console.log('Respuesta del servidor:', data);
+      console.log('Respuesta del servidor:', data)
 
       if (!data.ok) {
-        // Si no es correcto, manejamos el error con handleErrors
-        handleErrors(data);  // Esto actualizará el estado de los errores
+        handleErrors(data)
       }
 
     } catch (error) {
       console.error('Error durante la solicitud:', error);
-      handleErrors({ message: 'Hubo un problema al procesar tu solicitud. Intenta nuevamente.' }); // Error genérico
+      handleErrors({ message: 'Hubo un problema al procesar tu solicitud. Intenta nuevamente.' })
     }
-  };
-
-  // Configuración de los campos del formulario
+  }
+  
   const form_fields = [
     {
       label: {

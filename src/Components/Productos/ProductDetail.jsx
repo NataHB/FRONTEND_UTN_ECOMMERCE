@@ -13,7 +13,7 @@ const ProductDetail = () => {
 
 
     const handleAddToCart = (productId, quantity) => {
-        addToCart(productId, quantity);  // Llamar a la función de agregar al carrito
+        addToCart(productId, quantity)
     }
 
     return (

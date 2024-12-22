@@ -22,17 +22,17 @@ const Login = () => {
         body: JSON.stringify(formState),
       });
 
-      const data = await response.json();
+      const data = await response.json()
 
       if (!data.ok) {
-        return handleErrors(data);
+        return handleErrors(data)
       } else {
-        login(data.data.accessToken);
+        login(data.data.accessToken)
       }
     } catch (error) {
-      console.error('Error en la solicitud:', error);
+      console.error('Error en la solicitud:', error)
     }
-  };
+  }
 
   // Configuración de los campos del formulario
   const form_fields = [
@@ -71,7 +71,7 @@ const Login = () => {
   ];
 
   // Hook para manejar errores
-  const { errorState, handleErrors } = UseFormErrors({});
+  const { errorState, handleErrors } = UseFormErrors({})
 
 
   return (

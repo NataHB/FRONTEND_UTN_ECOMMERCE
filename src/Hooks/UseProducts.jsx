@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react'
 import  {getAuthenticatedHeaders}  from '../../utils/fetching'
 
 const useProducts = () => {
-    //logica de los productos
     const [products_state, setProducts] = useState([])
     const [products_loading_state, setProductsLoading] = useState(true)
     const [products_error_state, setProductsError] = useState(null)

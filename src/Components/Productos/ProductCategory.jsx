@@ -6,12 +6,12 @@ import { useContext } from 'react';
 import { CartContext } from '../../Context/CartContext';
 
 const ProductCategory = () => {
-  const { category } = useParams();  // Obtienes la categoría de la URL
-  const { productsByCategory, productsByCategoryLoading, productsByCategoryError } = UseProductsCategory(category);  // Llamas al hook pasándole la categoría
-  const { addToCart } = useContext(CartContext);
+  const { category } = useParams(); 
+  const { productsByCategory, productsByCategoryLoading, productsByCategoryError } = UseProductsCategory(category)
+  const { addToCart } = useContext(CartContext)
 
   const handleAddToCart = (productId, quantity) => {
-    addToCart(productId, quantity);  // Llamar a la función de agregar al carrito
+    addToCart(productId, quantity)
 }
 
   return (

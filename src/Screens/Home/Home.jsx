@@ -17,7 +17,7 @@ const Home = () => {
             <button><Link to={'/products'}>Ver colección</Link></button>
         </section>
         <section className='categorias-section'>
-            <h2>Categorias</h2>
+            <h2>Encontra lo que buscas</h2>
             <div className='categorias-section-container'>
                 <div className='categoria-container'>
                     <div className='categoria'>

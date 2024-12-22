@@ -12,27 +12,27 @@ const UseProductsCategory = (category) => {
         const response = await fetch(`${import.meta.env.VITE_API_URL}/products/category/${category}`, {
           method: 'GET',
           headers: getAuthenticatedHeaders()
-        });
+        })
 
-        const data = await response.json();
-        console.log(data);
+        const data = await response.json()
+        console.log(data)
 
         if (!data.ok) {
-          setProductsByCategoryError(data.error);
-          setProductsByCategoryLoading(false);
+          setProductsByCategoryError(data.error)
+          setProductsByCategoryLoading(false)
           return;
         }
 
-        setProductsByCategory(data.data.category);  // Asume que los productos están en data.data
-        setProductsByCategoryLoading(false);
+        setProductsByCategory(data.data.category) 
+        setProductsByCategoryLoading(false)
       } catch (error) {
-        setProductsByCategoryError('Error al obtener los productos');
-        setProductsByCategoryLoading(false);
+        setProductsByCategoryError('Error al obtener los productos')
+        setProductsByCategoryLoading(false)
       }
-    };
+    }
 
-    obtenerProductosByCategory();
-  }, [category]);  // Este useEffect se ejecuta cada vez que la categoría cambia
+    obtenerProductosByCategory()
+  }, [category])
 
   return {
     productsByCategory,

@@ -35,7 +35,7 @@ const Register = () => {
       }
 
       if (data.code === 'EMAIL_EXISTS') {
-        setGeneralError(data.message);
+        setGeneralError(data.message)
       }
     } else {
       navigate('/login')
@@ -43,7 +43,7 @@ const Register = () => {
       
       
     } catch (error) {
-      console.error('Error en la solicitud:', error);
+      console.error('Error en la solicitud:', error)
     }
   };
 

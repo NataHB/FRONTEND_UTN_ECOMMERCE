@@ -8,24 +8,24 @@ import { HiOutlineX } from "react-icons/hi";
 import './Navbar.css';
 
 const Navbar = ({ forceUpdate }) => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [openDropdown, setOpenDropdown] = useState(null); // Maneja dropdowns abiertos
-  const { categories, loading, error, reloadCategories } = UseCategories();
-  const { is_authenticated, logout } = useContext(AuthContext);
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [openDropdown, setOpenDropdown] = useState(null)
+  const { categories, loading, error, reloadCategories } = UseCategories()
+  const { is_authenticated, logout } = useContext(AuthContext)
 
   useEffect(() => {
-    reloadCategories();
-  }, [forceUpdate]);
+    reloadCategories()
+  }, [forceUpdate])
 
   const toggleMenu = () => {
-    setIsMenuOpen((prev) => !prev);
-  };
+    setIsMenuOpen((prev) => !prev)
+  }
 
   const toggleDropdown = (menu) => {
-    setOpenDropdown((prev) => (prev === menu ? null : menu));
-  };
+    setOpenDropdown((prev) => (prev === menu ? null : menu))
+  }
 
-  if (error) return <div>{error}</div>;
+  if (error) return <div>{error}</div>
 
   return (
     <nav className="navbar">

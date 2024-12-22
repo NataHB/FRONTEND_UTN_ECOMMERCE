@@ -21,12 +21,12 @@ export const CartProvider = ({ children }) => {
         const response = await fetch(`${import.meta.env.VITE_API_URL}/cart/cart/${userId}`, {
           headers: getAuthenticatedHeaders(),
         });
-        const data = await response.json();
+        const data = await response.json()
         if (data.data.cart) {
-          setCart(data.data.cart);
+          setCart(data.data.cart)
         }
       } catch (error) {
-        console.error("Error al obtener el carrito", error);
+        console.error("Error al obtener el carrito", error)
       }
     };
 
@@ -34,7 +34,7 @@ export const CartProvider = ({ children }) => {
     if (updateCart) {
       setUpdateCart(false);
     }
-  }, [is_authenticated, userId, updateCart]);
+  }, [is_authenticated, userId, updateCart])
 
   const addToCart = async (productId, quantity) => {
     if (isLoading) return;
@@ -52,13 +52,13 @@ export const CartProvider = ({ children }) => {
         body: JSON.stringify({ productId, quantity }),
         headers: getAuthenticatedHeaders(), 
       });
-      const data = await response.json();
+      const data = await response.json()
       if (data.data.cart) {
         setCart(data.data.cart); 
         setIsLoading(false);
       }
     } catch (error) {
-      console.error("Error al agregar producto al carrito", error);
+      console.error("Error al agregar producto al carrito", error)
     }
   };
 
@@ -86,7 +86,7 @@ export const CartProvider = ({ children }) => {
         body: JSON.stringify({ productId, quantity }),
         headers: getAuthenticatedHeaders(), 
       })
-      const data = await response.json();
+      const data = await response.json()
       if (data.data.cart) {
         setCart(data.data.cart.map((item) =>
             item.productId === productId
@@ -104,9 +104,9 @@ export const CartProvider = ({ children }) => {
     return cart.reduce((total, item) => {
       const price = parseFloat(item.productPrice)
       const quantity = parseInt(item.quantity, 10)  
-      return total + price * quantity;
+      return total + price * quantity
     }, 0).toFixed(2);
-  };
+  }
   
 
   return (

@@ -12,22 +12,22 @@ const ValidateMail = () => {
         try {
           const response = await fetch(`${import.meta.env.VITE_API_URL}/auth/verify-email/${validation_token}`
           )
-          const data = await response.json();
+          const data = await response.json()
           console.log (data);
           if (data.message == 'Error al verificar el correo') {
-            console.log(data.message);
-            return;
+            console.log(data.message)
+            return
           }
-          navigate('/login');
+          navigate('/login')
         } catch (err) {
-          console.log(err);
+          console.log(err)
           return
         }
-      };
+      }
 
       useEffect(() => {
-      verifyMail(validation_token);
-    }, []);
+      verifyMail(validation_token)
+    }, [])
 
   return (
     <div className='all-products'>

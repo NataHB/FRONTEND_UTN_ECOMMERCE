@@ -3,36 +3,36 @@ import useForm from '../../Hooks/UseForm';
 import './Form.css';
 
 const Form = ({ initial_form_state, action, form_fields, errorState, buttonText }) => {
-  const { formState, handleChange } = useForm(initial_form_state);
+  const { formState, handleChange } = useForm(initial_form_state)
   
-  const [imagePreview, setImagePreview] = useState(null);
+  const [imagePreview, setImagePreview] = useState(null)
 
   const handleFileChange = (e) => {
-    const file = e.target.files[0];
+    const file = e.target.files[0]
     if (file) {
-      const reader = new FileReader();
+      const reader = new FileReader()
       reader.onloadend = () => {
         handleChange({
           target: {
             name: e.target.name,
             value: reader.result 
           }
-        });
-        setImagePreview(reader.result); 
-      };
-      reader.readAsDataURL(file);
+        })
+        setImagePreview(reader.result)
+      }
+      reader.readAsDataURL(file)
     }
-  };
+  }
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    action(formState);
-  };
+    e.preventDefault()
+    action(formState)
+  }
 
   return (
     <form onSubmit={handleSubmit}>
       {form_fields.map((field, index) => {
-        const { label, field: inputField, errors } = field;
+        const { label, field: inputField, errors } = field
 
         return (
           <div key={index} className="form-field">
@@ -63,7 +63,7 @@ const Form = ({ initial_form_state, action, form_fields, errorState, buttonText 
               </ul>
             )}
           </div>
-        );
+        )
       })}
       <button type="submit">{buttonText}</button>
     </form>

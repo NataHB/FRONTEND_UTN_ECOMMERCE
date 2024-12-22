@@ -16,7 +16,7 @@ const ProductCreator = ({setForceUpdate}) => {
     category: '',
   };
 
-  const { errorState, handleErrors } = useFormErrors({});
+  const { errorState, handleErrors } = useFormErrors({})
 
   const handleCreateProduct = async (formState) => {
     try {
@@ -30,17 +30,16 @@ const ProductCreator = ({setForceUpdate}) => {
       console.log(data);
 
       if (data.data.errors) {
-        // Manejar errores si los hay
-        return handleErrors(data.data.errors);
+        return handleErrors(data.data.errors)
       }else{
-            setForceUpdate(prev => !prev);
-            navigate('/');
+            setForceUpdate(prev => !prev)
+            navigate('/')
       }
 
 
 
     } catch (error) {
-      console.error('Error al crear el producto:', error);
+      console.error('Error al crear el producto:', error)
     }
   };
 

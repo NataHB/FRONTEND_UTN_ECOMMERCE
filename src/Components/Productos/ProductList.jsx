@@ -11,7 +11,7 @@ const ProductList = () => {
     const { products_state, products_loading_state, products_error_state} = useProducts()
 
     const handleAddToCart = (productId, quantity) => {
-        addToCart(productId, quantity);  // Llamar a la función de agregar al carrito
+        addToCart(productId, quantity)
     }
 
     return (

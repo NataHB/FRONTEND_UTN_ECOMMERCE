@@ -7,20 +7,20 @@ import { useContext, useEffect } from 'react';
 import '../Navbar/Navbar.css';
 
 const CartComponent = ({ toggleDropdown, openDropdown }) => {
-  const { cart, removeFromCart, updateQuantity, getTotal } = useContext(CartContext);
-  const { is_authenticated } = useContext(AuthContext);
+  const { cart, removeFromCart, updateQuantity, getTotal } = useContext(CartContext)
+  const { is_authenticated } = useContext(AuthContext)
 
   useEffect(() => {
-    console.log('Carrito actualizado:', cart);
-  }, [cart]);
+    console.log('Carrito actualizado:', cart)
+  }, [cart])
 
   const handleRemove = (productId) => {
-    removeFromCart(productId);
-  };
+    removeFromCart(productId)
+  }
 
   const handleUpdateQuantity = (productId, newQuantity) => {
-    updateQuantity(productId, newQuantity);
-  };
+    updateQuantity(productId, newQuantity)
+  }
 
 
   return (
