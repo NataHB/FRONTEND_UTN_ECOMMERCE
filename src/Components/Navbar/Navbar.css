@@ -80,7 +80,7 @@
 .dropdown-menu {
   list-style: none;
   position: absolute;
-  max-height: 70vh;
+  max-height: 50vh;
   overflow-y: auto;
   top: 102%;
   left: 0;
